@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vidhata Infotech logo">
+  <defs>
+    <linearGradient id="viGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18a0ff"/>
+      <stop offset="0.5" stop-color="#3b5bff"/>
+      <stop offset="1" stop-color="#8b2bff"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="#ffffff"/>
+  <path d="M408,143.01 403.44,154.16 382.67,192.67 370,210.4 300.08,256.51 250.43,286.91 247.39,281.84 247.89,279.31 275.25,232.19 281.84,224.59ZM104,203.31 172.91,206.85 180.51,208.88 191.15,215.97 198.75,225.6 285.39,365.95 279.31,368.99 224.59,368.99 212.43,363.92 206.35,357.33ZM369.49,227.63 343.15,272.21 290.45,353.79 256,297.04Z" fill="url(#viGrad)" fill-rule="evenodd"/>
+</svg>

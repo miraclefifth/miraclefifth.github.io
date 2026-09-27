@@ -1,1503 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Vidhata Infotech — App Development Studio</title>
-
-    <meta
-        name="description"
-        content="Vidhata Infotech is an app development studio creating thoughtful, useful and beautifully designed applications."
-    >
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-
-        :root {
-            --ivory: #f5f0e6;
-            --paper: #eee7d8;
-            --cream: #faf7ef;
-            --ink: #2c241c;
-            --muted: #766b5c;
-            --gold: #9a7542;
-            --gold-light: #c8ad7d;
-            --line: rgba(75, 59, 40, 0.20);
-            --dark: #29231d;
-            --dark-muted: #aaa092;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--ivory);
-            color: var(--ink);
-            font-family: "DM Sans", sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.12;
-            z-index: 100;
-            background-image:
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-            mix-blend-mode: multiply;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            height: 88px;
-            padding: 0 7vw;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            position: relative;
-            z-index: 10;
-
-            border-bottom: 1px solid var(--line);
-        }
-
-        .logo {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 42px;
-
-            font-size: 10px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-        }
-
-        .nav-links a {
-            transition: color .3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: calc(100vh - 88px);
-
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            overflow: hidden;
-
-            padding: 100px 30px 120px;
-        }
-
-        .column {
-            position: absolute;
-            top: 0;
-
-            width: 110px;
-            height: 100%;
-
-            opacity: .48;
-            pointer-events: none;
-        }
-
-        .column.left {
-            left: 3vw;
-        }
-
-        .column.right {
-            right: 3vw;
-        }
-
-        .column::before {
-            content: "";
-
-            position: absolute;
-
-            top: 80px;
-            bottom: 40px;
-            left: 38px;
-
-            width: 34px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #cdbb9a,
-                    #eee5d3 25%,
-                    #b9a47f 50%,
-                    #eee5d3 75%,
-                    #c4b18e
-                );
-
-            box-shadow: 0 0 30px rgba(65, 47, 25, .12);
-        }
-
-        .column::after {
-            content: "";
-
-            position: absolute;
-
-            left: 15px;
-            top: 55px;
-
-            width: 80px;
-            height: 45px;
-
-            border-top: 12px double #b59c73;
-            border-bottom: 8px solid #b59c73;
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-
-            max-width: 950px;
-        }
-
-        .eyebrow {
-            font-size: 10px;
-            letter-spacing: .45em;
-            text-transform: uppercase;
-
-            color: var(--gold);
-
-            margin-bottom: 35px;
-        }
-
-        .ornamental-line {
-            width: 100px;
-            height: 1px;
-
-            background: var(--gold-light);
-
-            margin: 0 auto 35px;
-
-            position: relative;
-        }
-
-        .ornamental-line::before,
-        .ornamental-line::after {
-            content: "✦";
-
-            position: absolute;
-            top: -9px;
-
-            color: var(--gold);
-            font-size: 12px;
-        }
-
-        .ornamental-line::before {
-            left: -20px;
-        }
-
-        .ornamental-line::after {
-            right: -20px;
-        }
-
-        h1 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: clamp(70px, 12vw, 165px);
-            line-height: .76;
-
-            font-weight: 500;
-
-            letter-spacing: -0.055em;
-        }
-
-        .hero-subtitle {
-            margin-top: 40px;
-
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: clamp(25px, 3vw, 38px);
-
-            font-style: italic;
-
-            color: #544838;
-        }
-
-        .hero-description {
-            max-width: 590px;
-
-            margin: 28px auto 0;
-
-            font-size: 14px;
-            line-height: 1.9;
-
-            color: var(--muted);
-        }
-
-        .hero-button {
-            display: inline-flex;
-
-            margin-top: 45px;
-
-            border: 1px solid var(--gold);
-
-            padding: 15px 31px;
-
-            font-size: 10px;
-            letter-spacing: .24em;
-            text-transform: uppercase;
-
-            transition: all .35s ease;
-        }
-
-        .hero-button:hover {
-            background: var(--ink);
-            border-color: var(--ink);
-            color: var(--cream);
-        }
-
-        .hero-ornament {
-            position: absolute;
-            bottom: 34px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            font-family: "Cormorant Garamond", serif;
-
-            color: var(--gold);
-
-            font-size: 25px;
-
-            opacity: .7;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .statement {
-            background: var(--paper);
-
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-
-            padding: 125px 8vw;
-
-            text-align: center;
-        }
-
-        .section-label {
-            font-size: 10px;
-
-            text-transform: uppercase;
-            letter-spacing: .4em;
-
-            color: var(--gold);
-
-            margin-bottom: 30px;
-        }
-
-        .statement h2 {
-            max-width: 900px;
-
-            margin: auto;
-
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: clamp(43px, 6vw, 76px);
-
-            line-height: .95;
-
-            font-weight: 500;
-        }
-
-        .statement p {
-            max-width: 640px;
-
-            margin: 35px auto 0;
-
-            color: var(--muted);
-
-            line-height: 1.9;
-
-            font-size: 14px;
-        }
-
-        /* =========================
-           PRINCIPLES
-        ========================= */
-
-        .principles {
-            padding: 130px 8vw;
-
-            text-align: center;
-        }
-
-        .principles-grid {
-            max-width: 1100px;
-
-            margin: 75px auto 0;
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .principle {
-            padding: 55px 35px;
-
-            position: relative;
-        }
-
-        .principle + .principle {
-            border-left: 1px solid var(--line);
-        }
-
-        .number {
-            font-family: "Cormorant Garamond", serif;
-
-            color: var(--gold);
-
-            font-size: 17px;
-
-            margin-bottom: 20px;
-        }
-
-        .principle h3 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 31px;
-
-            font-weight: 600;
-
-            margin-bottom: 17px;
-        }
-
-        .principle p {
-            color: var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        /* =========================
-           APPS
-        ========================= */
-
-        .apps {
-            background: var(--dark);
-
-            color: #eee7d8;
-
-            padding: 130px 8vw;
-        }
-
-        .apps .section-label {
-            color: var(--gold-light);
-        }
-
-        .apps-header {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: end;
-
-            justify-content: space-between;
-
-            gap: 30px;
-        }
-
-        .apps h2 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: clamp(55px, 7vw, 90px);
-
-            font-weight: 500;
-
-            line-height: .85;
-        }
-
-        .apps-intro {
-            max-width: 340px;
-
-            color: var(--dark-muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        .app-list {
-            max-width: 1100px;
-
-            margin: 75px auto 0;
-        }
-
-        .app {
-            display: grid;
-
-            grid-template-columns: 80px 1fr auto;
-
-            align-items: center;
-
-            gap: 30px;
-
-            padding: 26px 0;
-
-            border-top: 1px solid rgba(238, 231, 216, .17);
-
-            transition:
-                padding .3s ease,
-                background .3s ease;
-        }
-
-        .app:last-child {
-            border-bottom: 1px solid rgba(238, 231, 216, .17);
-        }
-
-        .app:hover {
-            padding-left: 14px;
-        }
-
-        .app-icon {
-            width: 62px;
-            height: 62px;
-
-            border: 1px solid #81735f;
-
-            display: grid;
-            place-items: center;
-
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 22px;
-
-            color: var(--gold-light);
-        }
-
-        .app-content h3 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 28px;
-
-            font-weight: 500;
-        }
-
-        .app-content p {
-            margin-top: 5px;
-
-            color: #9f9689;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-        .developer-tag {
-            display: inline-block;
-
-            margin-top: 7px;
-
-            font-size: 8px;
-
-            letter-spacing: .18em;
-
-            text-transform: uppercase;
-
-            color: #7f766b;
-        }
-
-        .app-arrow {
-            color: var(--gold-light);
-
-            font-size: 22px;
-
-            transition: transform .3s ease;
-        }
-
-        .app:hover .app-arrow {
-            transform: translateX(5px);
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .closing {
-            padding: 150px 30px;
-
-            text-align: center;
-
-            background: var(--cream);
-        }
-
-        .closing h2 {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: clamp(50px, 7vw, 90px);
-
-            font-weight: 500;
-
-            line-height: .9;
-        }
-
-        .closing p {
-            max-width: 540px;
-
-            margin: 30px auto 40px;
-
-            color: var(--muted);
-
-            line-height: 1.8;
-
-            font-size: 14px;
-        }
-
-        .email-link {
-            display: inline-block;
-
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 24px;
-
-            border-bottom: 1px solid var(--gold);
-
-            padding-bottom: 5px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: var(--paper);
-
-            border-top: 1px solid var(--line);
-
-            padding: 35px 7vw;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            color: var(--muted);
-
-            font-size: 10px;
-
-            letter-spacing: .15em;
-
-            text-transform: uppercase;
-        }
-
-        footer strong {
-            font-family: "Cormorant Garamond", serif;
-
-            font-size: 18px;
-
-            letter-spacing: 0;
-
-            color: var(--ink);
-
-            text-transform: none;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                height: 75px;
-                padding: 0 25px;
-            }
-
-            .logo {
-                font-size: 25px;
-            }
-
-            .nav-links {
-                gap: 16px;
-                font-size: 8px;
-            }
-
-            .column {
-                display: none;
-            }
-
-            .hero {
-                min-height: calc(100vh - 75px);
-
-                padding: 90px 25px 100px;
-            }
-
-            h1 {
-                font-size: clamp(64px, 20vw, 110px);
-            }
-
-            .hero-subtitle {
-                font-size: 27px;
-            }
-
-            .statement,
-            .principles,
-            .apps {
-                padding: 90px 25px;
-            }
-
-            .principles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .principle + .principle {
-                border-left: 0;
-
-                border-top: 1px solid var(--line);
-            }
-
-            .apps-header {
-                display: block;
-            }
-
-            .apps-intro {
-                margin-top: 30px;
-            }
-
-            .app {
-                grid-template-columns: 58px 1fr 20px;
-
-                gap: 16px;
-            }
-
-            .app-icon {
-                width: 52px;
-                height: 52px;
-
-                font-size: 18px;
-            }
-
-            .app-content h3 {
-                font-size: 23px;
-            }
-
-            .app-content p {
-                font-size: 10px;
-            }
-
-            .app-arrow {
-                font-size: 17px;
-            }
-
-            footer {
-                flex-direction: column;
-
-                gap: 15px;
-
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .nav-links a:nth-child(2) {
-                display: none;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .hero-description {
-                font-size: 13px;
-            }
-
-            .app {
-                grid-template-columns: 50px 1fr 15px;
-                gap: 12px;
-            }
-
-            .app-icon {
-                width: 46px;
-                height: 46px;
-            }
-
-            .app-content h3 {
-                font-size: 20px;
-            }
-
-            .developer-tag {
-                font-size: 7px;
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidhata Infotech</title>
+  <meta name="description" content="Vidhata Infotech is an app development studio crafting native iOS apps across productivity, health, utilities, games and more. Explore our App Store portfolio." />
+  <meta name="theme-color" content="#05060a" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vidhata Infotech" />
+  <meta property="og:description" content="We design and build native iOS apps. Explore our App Store portfolio." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://itunes.apple.com" />
+  <link rel="preconnect" href="https://is1-ssl.mzstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-2: #090b12;
+      --text: #f4f5fb;
+      --muted: #9aa0b5;
+      --muted-2: #6a7189;
+      --glass: rgba(255, 255, 255, 0.055);
+      --glass-strong: rgba(255, 255, 255, 0.09);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-border-hover: rgba(255, 255, 255, 0.26);
+      --violet: #8b5cff;
+      --cyan: #35d6ee;
+      --pink: #ff5c9d;
+      --shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.75);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ===== Ambient background ===== */
+    .bg-wrap {
+      position: fixed; inset: 0; z-index: -2;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(139, 92, 255, 0.12), transparent 45%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+    .blob {
+      position: fixed; border-radius: 50%; filter: blur(90px);
+      opacity: 0.55; z-index: -1; pointer-events: none;
+      animation: float 18s ease-in-out infinite;
+    }
+    .blob.v { width: 520px; height: 520px; background: #7b3cff; top: -140px; left: -120px; }
+    .blob.c { width: 460px; height: 460px; background: #17b7d4; top: 30%; right: -160px; animation-delay: -6s; }
+    .blob.p { width: 420px; height: 420px; background: #ff3f86; bottom: -160px; left: 30%; animation-delay: -11s; opacity: 0.4; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, 40px) scale(1.08); }
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: -1; opacity: 0.05; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ===== Layout ===== */
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    section { position: relative; }
+
+    /* Boxy chip with angular gradient tick */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 8px 14px; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .eyebrow .dot {
+      width: 22px; height: 3px; border-radius: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      transform: skewX(-24deg);
+      box-shadow: 0 0 14px -2px rgba(53, 214, 238, 0.55);
+    }
+
+    h1, h2, h3 { font-family: "Sora", sans-serif; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .grad-text {
+      background: linear-gradient(100deg, #fff 0%, var(--violet) 45%, var(--cyan) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ===== Nav ===== */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      transition: background .3s, border-color .3s, box-shadow .3s;
+      border-bottom: 1px solid transparent;
+    }
+    header.nav.scrolled {
+      background: rgba(8, 9, 15, 0.6);
+      backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); font-family: "Sora", sans-serif; font-weight: 700; font-size: 1.12rem; }
+    .brand .mark { display: flex; align-items: center; }
+    .brand .mark img { width: 42px; height: 42px; display: block; border-radius: 11px; box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06); }
+    .brand small { display: block; font-family: "Inter"; font-weight: 500; font-size: .68rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 500; padding: 9px 15px; border-radius: 100px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: var(--text); background: var(--glass); }
+    .nav-cta { color: var(--text) !important; border: 1px solid var(--glass-border); background: var(--glass) !important; }
+    .nav-cta:hover { border-color: var(--glass-border-hover); }
+    .menu-btn { display: none; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text); width: 42px; height: 42px; border-radius: 12px; font-size: 1.2rem; cursor: pointer; }
+
+    /* ===== Hero ===== */
+    .hero { padding: 90px 0 60px; text-align: center; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.6rem); line-height: 1.05; font-weight: 800; margin: 26px auto 0; max-width: 15ch; }
+    .hero p.lead { color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.22rem); max-width: 56ch; margin: 22px auto 0; }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px; border-radius: 100px; font-weight: 600; font-size: .98rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, background .2s, border-color .2s; }
+    .btn-primary { color: #0b0713; background: linear-gradient(100deg, #fff, #cfe9ff); box-shadow: 0 12px 34px -10px rgba(53, 214, 238, 0.6); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(139, 92, 255, 0.7); }
+    .btn-ghost { color: var(--text); background: var(--glass); border-color: var(--glass-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .btn-ghost:hover { border-color: var(--glass-border-hover); transform: translateY(-2px); background: var(--glass-strong); }
+
+    /* ===== Stats ===== */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 780px; margin: 56px auto 0; }
+    .stat { padding: 22px 16px; border-radius: var(--radius-sm); background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: var(--shadow); }
+    .stat .num { font-family: "Sora"; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; }
+    .stat .lbl { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+
+    /* ===== Section heading ===== */
+    .sec-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+    .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-top: 18px; }
+    .sec-head p { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+    .section-pad { padding: 90px 0; }
+
+    /* ===== Filters — boxy chips ===== */
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px; min-height: 40px; }
+    .pill {
+      font-family: "Inter"; font-size: .86rem; font-weight: 500; cursor: pointer; color: var(--muted);
+      padding: 9px 16px; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .pill:hover { color: var(--text); border-color: var(--glass-border-hover); }
+    .pill.active {
+      color: #fff; font-weight: 600; border-color: transparent;
+      background: linear-gradient(120deg, #7c4dff, #4361ff);
+      box-shadow: 0 10px 24px -12px rgba(124, 77, 255, 0.85);
+    }
+
+    /* ===== App grid ===== */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .app-card {
+      display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: var(--radius);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: var(--shadow);
+      text-decoration: none; color: var(--text); position: relative; overflow: hidden;
+      transition: transform .28s cubic-bezier(.2,.7,.3,1), border-color .28s, background .28s;
+      animation: cardIn .5s cubic-bezier(.2,.7,.3,1) both;
+    }
+    @keyframes cardIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .app-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(139,92,255,0.16), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+    .app-card:hover { transform: translateY(-6px); border-color: var(--glass-border-hover); background: var(--glass-strong); }
+    .app-card:hover::before { opacity: 1; }
+    .app-icon { flex-shrink: 0; width: 66px; height: 66px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.06); box-shadow: 0 8px 22px -8px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.12); }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .app-icon.noimg { display: grid; place-items: center; background: linear-gradient(140deg, rgba(139,92,255,.35), rgba(53,214,238,.28)); font-family: "Sora"; font-weight: 700; font-size: 1.5rem; color: #fff; }
+    .app-meta { display: flex; flex-direction: column; min-width: 0; }
+    .app-name { font-family: "Sora"; font-weight: 600; font-size: 1.02rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-genre { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+    .app-arrow { margin-left: auto; color: var(--muted-2); font-size: 1.1rem; transition: transform .25s, color .25s; }
+    .app-card:hover .app-arrow { color: var(--cyan); transform: translate(3px, -3px); }
+    .app-card.hide { display: none; }
+
+    /* ===== Skeleton / states ===== */
+    .skeleton { display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: var(--radius); background: var(--glass); border: 1px solid var(--glass-border); }
+    .sk-icon { width: 66px; height: 66px; border-radius: 16px; flex-shrink: 0; }
+    .sk-lines { flex: 1; display: flex; flex-direction: column; gap: 9px; }
+    .sk-line { height: 12px; border-radius: 6px; }
+    .sk-line.short { width: 45%; }
+    .shimmer { position: relative; overflow: hidden; background: rgba(255,255,255,.06); }
+    .shimmer::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent); animation: shimmer 1.4s infinite; }
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+    .state { grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--muted); }
+    .state h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 8px; }
+    .state .btn { margin-top: 18px; }
+    .state a.inline { color: var(--cyan); text-decoration: none; }
+    .state a.inline:hover { text-decoration: underline; }
+
+    /* ===== Approach ===== */
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .feat { padding: 30px 26px; border-radius: var(--radius); background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: var(--shadow); transition: transform .28s, border-color .28s; }
+    .feat:hover { transform: translateY(-5px); border-color: var(--glass-border-hover); }
+    .feat .ico { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; color: #fff; background: linear-gradient(140deg, rgba(139,92,255,.25), rgba(53,214,238,.2)); border: 1px solid var(--glass-border); }
+    .feat .ico svg { width: 26px; height: 26px; display: block; }
+    .feat h3 { font-size: 1.22rem; }
+    .feat p { color: var(--muted); margin: 10px 0 0; font-size: .96rem; }
+
+    /* ===== Contact ===== */
+    .contact-panel { text-align: center; padding: clamp(40px, 6vw, 70px) 30px; border-radius: 30px; background: linear-gradient(160deg, rgba(139,92,255,.12), rgba(53,214,238,.06)); border: 1px solid var(--glass-border); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .contact-panel h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+    .contact-panel p { color: var(--muted); max-width: 48ch; margin: 16px auto 30px; font-size: 1.06rem; }
+
+    /* ===== Footer ===== */
+    footer.foot { border-top: 1px solid var(--glass-border); margin-top: 90px; padding: 40px 0; }
+    .foot-inner { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+    .foot-inner p { color: var(--muted-2); font-size: .88rem; margin: 0; }
+    .foot-links { display: flex; gap: 18px; }
+    .foot-links a { color: var(--muted); text-decoration: none; font-size: .88rem; }
+    .foot-links a:hover { color: var(--text); }
+
+    /* ===== Reveal ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 780px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 16px; right: 16px; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px; border-radius: 18px; background: rgba(10,11,18,.92); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 16px; }
+      .menu-btn { display: block; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .section-pad { padding: 64px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .app-card { animation: none !important; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-wrap"></div>
+  <div class="blob v"></div>
+  <div class="blob c"></div>
+  <div class="blob p"></div>
+  <div class="grain"></div>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand">
+        <span class="mark"><img src="assets/logo.svg" alt="Vidhata Infotech logo" width="42" height="42" /></span>
+        <span>Vidhata Infotech</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact" class="nav-cta">Get in touch</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
 
-    <nav>
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="eyebrow reveal"><span class="dot"></span> App Development Studio</span>
+      <h1 class="reveal">We build <span class="grad-text">iOS apps</span> people keep on their home screen</h1>
+      <p class="lead reveal">Vidhata Infotech designs and ships native iPhone apps across productivity, health, utilities, lifestyle and games — from first idea to a polished App Store launch.</p>
+      <div class="hero-cta reveal">
+        <a href="#work" class="btn btn-primary">View our apps →</a>
+        <a href="#contact" class="btn btn-ghost">Start a project</a>
+      </div>
 
-        <a href="#top" class="logo">
-            Vidhata <span>Infotech</span>
-        </a>
+      <div class="stats reveal">
+        <div class="stat"><div class="num grad-text" id="statApps">—</div><div class="lbl">Apps on the App Store</div></div>
+        <div class="stat"><div class="num grad-text" id="statCats">—</div><div class="lbl">Categories shipped</div></div>
+        <div class="stat"><div class="num grad-text">100%</div><div class="lbl">Native iOS</div></div>
+        <div class="stat"><div class="num grad-text">∞</div><div class="lbl">Ideas welcome</div></div>
+      </div>
+    </div>
+  </section>
 
-        <div class="nav-links">
-            <a href="#apps">Apps</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+  <!-- ===== Work ===== -->
+  <section class="section-pad" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> Portfolio</span>
+        <h2>Apps we've designed &amp; built</h2>
+        <p>Live from the App Store. Tap any app to open it on the App Store.</p>
+      </div>
+
+      <div class="filters" id="filters" role="tablist" aria-label="Filter apps by category"></div>
+
+      <div class="grid" id="grid" aria-live="polite" aria-busy="true"></div>
+
+      <noscript>
+        <div style="text-align:center;color:var(--muted);padding:20px">
+          Our live app list needs JavaScript. Browse our apps directly on the App Store:
+          <a class="inline" style="color:var(--cyan)" href="https://apps.apple.com/us/developer/jay-lakhani/id1820580603" target="_blank" rel="noopener">Jay Lakhani</a> ·
+          <a class="inline" style="color:var(--cyan)" href="https://apps.apple.com/us/developer/sonal-sojitra/id6797255040" target="_blank" rel="noopener">Sonal Sojitra</a>
         </div>
-
-    </nav>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <main class="hero" id="top">
-
-        <div class="column left"></div>
-        <div class="column right"></div>
-
-        <div class="hero-inner">
-
-            <div class="eyebrow">
-                App Development Studio
-            </div>
-
-            <div class="ornamental-line"></div>
-
-            <h1>
-                Vidhata<br>Infotech
-            </h1>
-
-            <div class="hero-subtitle">
-                Ideas, crafted into experiences.
-            </div>
-
-            <p class="hero-description">
-                We create thoughtful applications designed around useful
-                ideas, elegant experiences, and the details that make
-                everyday technology feel better.
-            </p>
-
-            <a href="#apps" class="hero-button">
-                Explore our apps
-            </a>
-
-        </div>
-
-        <div class="hero-ornament">
-            ✦
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section class="statement" id="about">
-
-        <div class="section-label">
-            About Vidhata Infotech
-        </div>
-
-        <h2>
-            Simple ideas deserve
-            thoughtful execution.
-        </h2>
-
-        <p>
-            Vidhata Infotech is an app development studio focused on
-            creating useful, intuitive, and visually refined applications.
-            We explore ideas across productivity, lifestyle, utilities,
-            entertainment, health, and everyday experiences.
-        </p>
-
-    </section>
-
-
-    <!-- =========================
-         PRINCIPLES
-    ========================== -->
-
-    <section class="principles">
-
-        <div class="section-label">
-            Our Approach
-        </div>
-
-        <div class="principles-grid">
-
-            <div class="principle">
-
-                <div class="number">
-                    I
-                </div>
-
-                <h3>
-                    Ideas
-                </h3>
-
-                <p>
-                    We look for simple opportunities to make everyday
-                    tasks more useful, enjoyable, and accessible.
-                </p>
-
-            </div>
-
-
-            <div class="principle">
-
-                <div class="number">
-                    II
-                </div>
-
-                <h3>
-                    Craft
-                </h3>
-
-                <p>
-                    We care about the details — from interaction and
-                    typography to performance and reliability.
-                </p>
-
-            </div>
-
-
-            <div class="principle">
-
-                <div class="number">
-                    III
-                </div>
-
-                <h3>
-                    Experience
-                </h3>
-
-                <p>
-                    Every product is shaped around clarity, simplicity,
-                    and an experience people can enjoy using.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         APPS
-    ========================== -->
-
-    <section class="apps" id="apps">
-
-        <div class="apps-header">
-
-            <div>
-
-                <div class="section-label">
-                    Our Applications
-                </div>
-
-                <h2>
-                    Selected<br>Apps
-                </h2>
-
-            </div>
-
-            <p class="apps-intro">
-                Explore our growing collection of applications across
-                productivity, lifestyle, utilities, entertainment,
-                health, and more.
-            </p>
-
-        </div>
-
-
-        <div class="app-list">
-
-
-            <!-- 01 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/ai-calorie-counter-calery/id6789642091"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    01
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        AI Calorie Counter - Calery
-                    </h3>
-
-                    <p>
-                        Food Nutrition & Macro Tracker
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 02 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/no-contact-tracker-move-on/id6790085548"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    02
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        No Contact Tracker: Move On
-                    </h3>
-
-                    <p>
-                        Breakup Recovery & Healing
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 03 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/bible-app-daily-verse-pray/id6779263295"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    03
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Bible App: Daily Verse & Pray
-                    </h3>
-
-                    <p>
-                        Daily Verse, Prayer & Devotions
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 04 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/dovee-couples-questions/id6770237393"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    04
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Dovee - Couples Questions
-                    </h3>
-
-                    <p>
-                        Relationship Questions & Quiz Game
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 05 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/whats-web-dual-chat-app/id6766998749"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    05
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Whats Web: Dual Chat App
-                    </h3>
-
-                    <p>
-                        Dual Chat, Status Saver & QR Scanner
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 06 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/never-have-i-ever-dirty/id6764105989"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    06
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Never Have I Ever: Dirty
-                    </h3>
-
-                    <p>
-                        Party Game
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 07 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/true-caller-id-call-manager/id6760224130"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    07
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        True: Caller ID & Call Manager
-                    </h3>
-
-                    <p>
-                        Caller ID, Spam Blocking & Call Management
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 08 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/parallel-space-multiple-apps/id6759920153"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    08
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Parallel Space, Multiple Apps
-                    </h3>
-
-                    <p>
-                        App Cloner & Dual Accounts
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 09 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/diary-lock-my-journal/id6759005602"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    09
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Diary Lock: My Journal
-                    </h3>
-
-                    <p>
-                        Private Notes & Password
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 10 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/glp-1-tracker-dosewise/id6758620332"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    10
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        GLP 1 Tracker - DoseWise
-                    </h3>
-
-                    <p>
-                        Medication & Wellness Tracker
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 11 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/pdf-maker-scan-edit/id6757358128"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    11
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        PDF Maker: Scan & Edit
-                    </h3>
-
-                    <p>
-                        Document Scanner & Converter
-                    </p>
-
-                    <span class="developer-tag">
-                        Jay Lakhani
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 12 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/photo-stamps-kitte/id6811555541"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    12
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        Photo Stamps - Kitte
-                    </h3>
-
-                    <p>
-                        Collect Memories as Stamps
-                    </p>
-
-                    <span class="developer-tag">
-                        Sonal Sojitra
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-            <!-- 13 -->
-
-            <a
-                class="app"
-                href="https://apps.apple.com/us/app/the-measure-app-gps-field/id6797255038"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <div class="app-icon">
-                    13
-                </div>
-
-                <div class="app-content">
-
-                    <h3>
-                        The Measure App - GPS Field
-                    </h3>
-
-                    <p>
-                        GPS Land & Distance Calculator
-                    </p>
-
-                    <span class="developer-tag">
-                        Sonal Sojitra
-                    </span>
-
-                </div>
-
-                <div class="app-arrow">
-                    ↗
-                </div>
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section class="closing" id="contact">
-
-        <div class="section-label">
-            Contact
-        </div>
-
-        <h2>
-            Let's build something<br>
-            worth using.
-        </h2>
-
-        <p>
-            For questions, collaborations, or anything related to
-            our applications, feel free to get in touch.
-        </p>
-
-        <a
-            href="mailto:miraclefifth@gmail.com"
-            class="email-link"
-        >
-            miraclefifth@gmail.com
-        </a>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <strong>
-            Vidhata Infotech
-        </strong>
-
-        <span>
-            © 2026 Vidhata Infotech. All rights reserved.
-        </span>
-
-        <span>
-            App Development Studio
-        </span>
-
-    </footer>
-
-
+      </noscript>
+    </div>
+  </section>
+
+  <!-- ===== Approach ===== -->
+  <section class="section-pad" id="approach">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span> How we work</span>
+        <h2>From idea to App Store</h2>
+        <p>A small, focused studio that owns the whole build — design, engineering and launch.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><line x1="10.5" y1="18.6" x2="13.5" y2="18.6"/></svg></div><h3>Native iOS craft</h3><p>Built with Swift and SwiftUI for performance, smooth animation and a genuinely native feel on every iPhone.</p></div>
+        <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></div><h3>Design-led</h3><p>Clean, modern interfaces with attention to detail — from the first screen to the App Store listing.</p></div>
+        <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></svg></div><h3>Ship fast, iterate</h3><p>We move quickly from concept to a live app, then refine with real user feedback and updates.</p></div>
+        <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg></div><h3>Range across categories</h3><p>Productivity, health, utilities, lifestyle, games and more — versatile products that solve real problems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section-pad" id="contact">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <span class="eyebrow"><span class="dot"></span> Let's talk</span>
+        <h2 style="margin-top:18px">Have an app idea?</h2>
+        <p>Tell us what you're building. Whether it's a fresh concept or an existing product that needs a rebuild, we'd love to help bring it to the App Store.</p>
+        <a href="mailto:miraclefifth@gmail.com?subject=App%20project%20enquiry%20—%20Vidhata%20Infotech" class="btn btn-primary">Email us →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <p>© <span id="year"></span> Vidhata Infotech</p>
+      <div class="foot-links">
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="mailto:miraclefifth@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- Config: developers whose apps to show (dynamic) ---------- */
+    var DEVELOPER_IDS = [1820580603, 6797255040];
+    var STOREFRONT = "us";
+
+    /* ---------- UI chrome ---------- */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    var nav = document.getElementById("nav");
+    var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 12); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    var menuBtn = document.getElementById("menuBtn");
+    var navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", function () { navLinks.classList.toggle("open"); });
+    navLinks.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { navLinks.classList.remove("open"); });
+    });
+
+    // Reveal (static sections) with failsafe
+    var revealEls = document.querySelectorAll(".reveal");
+    var showAll = function () { revealEls.forEach(function (el) { el.classList.add("in"); }); };
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { threshold: 0.04, rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach(function (el) { io.observe(el); });
+      setTimeout(showAll, 1600);
+    } else { showAll(); }
+
+    /* ---------- Helpers ---------- */
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function slug(s) { return String(s || "app").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+    function iconUrl(a) {
+      var u = a.artworkUrl512 || a.artworkUrl100 || a.artworkUrl60 || "";
+      return u.replace(/\/\d+x\d+bb\.(jpg|png)$/, "/246x246bb.png");
+    }
+    function initials(name) {
+      var w = String(name || "").replace(/[^A-Za-z0-9 ]/g, "").trim().split(/\s+/);
+      return ((w[0] || "")[0] || "?").toUpperCase() + ((w[1] || "")[0] || "").toUpperCase();
+    }
+
+    /* ---------- Data fetch: CORS fetch() with JSONP fallback ---------- */
+    function endpoint(id) {
+      return "https://itunes.apple.com/lookup?id=" + id + "&entity=software&limit=200&country=" + STOREFRONT;
+    }
+    function fetchDeveloper(id) {
+      var url = endpoint(id);
+      return fetch(url, { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (d) { return d.results || []; })
+        .catch(function () { return jsonp(url).then(function (d) { return d.results || []; }); });
+    }
+    function jsonp(url) {
+      return new Promise(function (resolve, reject) {
+        var cb = "__vi_cb_" + Math.random().toString(36).slice(2);
+        var s = document.createElement("script");
+        var done = false;
+        function cleanup() { try { delete window[cb]; } catch (e) { window[cb] = undefined; } s.remove(); }
+        window[cb] = function (data) { done = true; cleanup(); resolve(data); };
+        s.onerror = function () { cleanup(); reject(new Error("jsonp error")); };
+        s.src = url + "&callback=" + cb;
+        document.head.appendChild(s);
+        setTimeout(function () { if (!done) { cleanup(); reject(new Error("jsonp timeout")); } }, 12000);
+      });
+    }
+
+    /* ---------- Rendering ---------- */
+    var grid = document.getElementById("grid");
+    var filters = document.getElementById("filters");
+
+    function renderSkeletons(n) {
+      var html = "";
+      for (var i = 0; i < n; i++) {
+        html += '<div class="skeleton"><div class="sk-icon shimmer"></div><div class="sk-lines"><div class="sk-line shimmer"></div><div class="sk-line short shimmer"></div></div></div>';
+      }
+      grid.innerHTML = html;
+      grid.setAttribute("aria-busy", "true");
+    }
+
+    function renderError() {
+      grid.setAttribute("aria-busy", "false");
+      filters.innerHTML = "";
+      grid.innerHTML =
+        '<div class="state">' +
+          "<h3>Couldn't load the live app list</h3>" +
+          "<p>You can still browse everything on the App Store.</p>" +
+          '<p style="margin-top:10px">' +
+            '<a class="inline" href="https://apps.apple.com/' + STOREFRONT + '/developer/jay-lakhani/id1820580603" target="_blank" rel="noopener">Jay Lakhani</a>' +
+            ' &nbsp;·&nbsp; ' +
+            '<a class="inline" href="https://apps.apple.com/' + STOREFRONT + '/developer/sonal-sojitra/id6797255040" target="_blank" rel="noopener">Sonal Sojitra</a>' +
+          "</p>" +
+          '<button class="btn btn-ghost" id="retryBtn" type="button">Try again</button>' +
+        "</div>";
+      var rb = document.getElementById("retryBtn");
+      if (rb) rb.addEventListener("click", init);
+    }
+
+    function cardHTML(a) {
+      var name = a.trackName || a.trackCensoredName || "App";
+      var genre = a.primaryGenreName || "App";
+      var url = (a.trackViewUrl || "").split("?")[0];
+      var icon = iconUrl(a);
+      return (
+        '<a class="app-card" href="' + esc(url) + '" target="_blank" rel="noopener" data-genre="' + slug(genre) + '" aria-label="' + esc(name) + ' on the App Store">' +
+          '<span class="app-icon" data-initials="' + esc(initials(name)) + '">' +
+            (icon ? '<img src="' + esc(icon) + '" alt="' + esc(name) + ' icon" loading="lazy" width="88" height="88" onerror="var p=this.closest(\'.app-icon\'); p.classList.add(\'noimg\'); p.textContent=p.getAttribute(\'data-initials\');">' : "") +
+          "</span>" +
+          '<span class="app-meta"><span class="app-name">' + esc(name) + '</span><span class="app-genre">' + esc(genre) + "</span></span>" +
+          '<span class="app-arrow" aria-hidden="true">↗</span>' +
+        "</a>"
+      );
+    }
+
+    function renderApps(apps) {
+      // Category filters from live data
+      var genres = [];
+      apps.forEach(function (a) { var g = a.primaryGenreName || "App"; if (genres.indexOf(g) === -1) genres.push(g); });
+      genres.sort();
+
+      var pills = '<button class="pill active" data-filter="all" role="tab" aria-selected="true">All</button>';
+      genres.forEach(function (g) { pills += '<button class="pill" data-filter="' + slug(g) + '" role="tab" aria-selected="false">' + esc(g) + "</button>"; });
+      filters.innerHTML = pills;
+
+      // Cards (stagger the entrance a touch)
+      grid.innerHTML = apps.map(cardHTML).join("");
+      grid.setAttribute("aria-busy", "false");
+      Array.prototype.slice.call(grid.children).forEach(function (c, i) {
+        c.style.animationDelay = Math.min(i * 45, 500) + "ms";
+      });
+
+      // Stats
+      document.getElementById("statApps").textContent = apps.length;
+      document.getElementById("statCats").textContent = genres.length;
+
+      wireCards();
+    }
+
+    function wireCards() {
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".app-card"));
+      cards.forEach(function (card) {
+        card.addEventListener("pointermove", function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+          card.style.setProperty("--my", (e.clientY - r.top) + "px");
+        });
+      });
+    }
+
+    // Filter (event delegation — survives re-render)
+    filters.addEventListener("click", function (e) {
+      var btn = e.target.closest(".pill");
+      if (!btn) return;
+      filters.querySelectorAll(".pill").forEach(function (p) { p.classList.remove("active"); p.setAttribute("aria-selected", "false"); });
+      btn.classList.add("active"); btn.setAttribute("aria-selected", "true");
+      var f = btn.getAttribute("data-filter");
+      document.querySelectorAll(".app-card").forEach(function (c) {
+        c.classList.toggle("hide", f !== "all" && c.getAttribute("data-genre") !== f);
+      });
+    });
+
+    /* ---------- Init ---------- */
+    function init() {
+      renderSkeletons(8);
+      Promise.all(DEVELOPER_IDS.map(fetchDeveloper))
+        .then(function (lists) {
+          var all = [];
+          lists.forEach(function (l) { all = all.concat(l); });
+          var seen = {};
+          var apps = all.filter(function (a) {
+            if (a.wrapperType && a.wrapperType !== "software") return false;
+            if (!a.trackId || seen[a.trackId]) return false;
+            seen[a.trackId] = 1; return true;
+          });
+          if (!apps.length) throw new Error("no apps");
+          apps.sort(function (a, b) {
+            return new Date(b.currentVersionReleaseDate || b.releaseDate || 0) - new Date(a.currentVersionReleaseDate || a.releaseDate || 0);
+          });
+          renderApps(apps);
+        })
+        .catch(renderError);
+    }
+
+    init();
+  </script>
 </body>
 </html>
